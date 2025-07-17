@@ -1,0 +1,549 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&family=Noto+Sans+Thai:wght@300;400;500;700&display=swap');
+
+:root {
+    /* Colors */
+    --primary-color: #4CAF50; /* เขียว - สีหลักสำหรับเน้น */
+    --secondary-color: #FFC107; /* ส้มอำพัน - สีไฮไลท์/เน้น */
+    --dark-text: #2c3e50; /* น้ำเงิน-เทาเข้ม - สีข้อความหลัก */
+    --light-text: #fefefe; /* ขาวอมเทา */
+    --background-light: #f8f9fa; /* เทาอ่อน */
+    --background-accent: #e8f5e9; /* เขียวอ่อนมาก */
+    --card-background: #ffffff; /* ขาวล้วน */
+    --border-color: #e0e0e0; /* สีขอบเทาอ่อน */
+    --date-color: #e74c3c; /* แดงสำหรับวันที่ */
+
+    /* Typography */
+    --font-heading: 'Kanit', sans-serif;
+    --font-body: 'Noto Sans Thai', sans-serif;
+
+    /* Spacing */
+    --spacing-sm: 15px;
+    --spacing-md: 30px;
+    --spacing-lg: 60px;
+    --spacing-xl: 90px;
+
+    /* Border Radius */
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--dark-text);
+    background-color: var(--background-light);
+    line-height: 1.6;
+    scroll-behavior: smooth; /* การเลื่อนหน้าจอแบบนุ่มนวล */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+    
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--dark-text);
+    margin-top: 0;
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+/* --- 2. Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: var(--border-radius-sm);
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    border: 2px solid var(--primary-color);
+}
+
+.primary-btn:hover {
+    background-color: #43a047; /* เขียวเข้มขึ้นโดยตรง */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.secondary-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 3. Header & Navigation --- */
+.main-header {
+    background-color: var(--dark-text);
+    padding: 1rem 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: padding 0.3s ease, background-color 0.3s ease;
+}
+
+.main-header.sticky {
+    padding: 0.7rem 0;
+    background-color: rgba(44, 62, 80, 0.95); /* โปร่งแสงเล็กน้อยเมื่อติด */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+  color: var(--light-text); /* สีปกติตอนยังไม่ชี้ */
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  transition: color 0.3s ease, transform 0.3s ease;
+  position: relative;
+}
+
+.logo a:hover {
+  background: linear-gradient(90deg, #4facfe, #00f2fe, #43e97b, #38f9d7);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 1.8s linear infinite; /* ลดเวลาจาก 6s เป็น 2s */
+  transform: scale(1.1);
+  color: transparent;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-left: var(--spacing-md);
+}
+
+.nav-links a {
+    color: var(--light-text);
+    font-size: 1.05rem;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 5px; /* พื้นที่สำหรับเอฟเฟกต์ขีดเส้นใต้ */
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px; /* ขีดเส้นใต้หนาขึ้น */
+    background-color: var(--secondary-color);
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Burger Menu */
+.burger-menu {
+    display: none; /* ซ่อนไว้เป็นค่าเริ่มต้นบนเดสก์ท็อป */
+    cursor: pointer;
+    z-index: 1001; /* ตรวจสอบให้แน่ใจว่าอยู่เหนือ nav-links เมื่อเปิด */
+    padding: 5px; /* เพิ่ม padding เพื่อให้คลิกง่ายขึ้น */
+}
+
+.burger-menu .line {
+    width: 28px; /* กว้างขึ้นเล็กน้อย */
+    height: 3px;
+    background-color: var(--light-text);
+    margin: 6px 0; /* ระยะห่างมากขึ้น */
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+/* --- 4. Hero Section --- */
+.hero-section {
+    display: flex;
+    justify-content: space-between; /* กระจายพื้นที่ระหว่างเนื้อหาและวิดีโอ */
+    align-items: center; /* จัดเนื้อหาในแนวตั้งให้กึ่งกลาง */
+    gap: var(--spacing-lg); /* เว้นช่องว่างระหว่าง hero-content กับ my-video */
+    padding: var(--spacing-xl) var(--spacing-sm);
+    background: linear-gradient(135deg, #e0f7fa, #b2ebf2); /* ไล่ระดับสีฟ้าอ่อน */
+    color: var(--dark-text);
+    flex-wrap: wrap; /* อนุญาตให้เนื้อหาและวิดีโอขึ้นบรรทัดใหม่เมื่อหน้าจอเล็ก */
+}
+
+.hero-content {
+    flex: 1; /* ให้เนื้อหาหลักใช้พื้นที่ที่เหลืออยู่ */
+    max-width: 650px; /* จำกัดความกว้างสูงสุดของเนื้อหา */
+    padding-right: var(--spacing-md); /* เพิ่มระยะห่างด้านขวาของเนื้อหา */
+    text-align: left; /* จัดข้อความชิดซ้าย */
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--dark-text);
+    line-height: 1.1; /* ระยะห่างระหว่างบรรทัดกระชับขึ้น */
+}
+
+.hero-content p {
+    font-size: 1.4rem;
+    margin-bottom: var(--spacing-md);
+    color: #555;
+    font-weight: 300;
+}
+
+.my-video {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    aspect-ratio: 16 / 9;
+    margin-left: auto;
+    margin-right: 80px;
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    background-color: var(--card-background);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.my-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    transition: transform 0.6s ease-in-out;
+    transform-origin: center center;
+    z-index: 1;
+}
+
+/* ลูกเล่นซูมเข้านุ่ม ๆ เมื่อ hover */
+.my-video:hover iframe {
+    transform: scale(1.1);
+}
+
+
+
+
+/* --- 5. General Sections --- */
+section {
+    padding: var(--spacing-xl) var(--spacing-sm);
+    margin: 0 auto;
+    scroll-margin-top: 100px; /* ทำให้หัวเรื่องที่ติดอยู่ไม่บังเนื้อหาเมื่อเลื่อนไปที่ส่วนนี้ */
+}
+
+.section-title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+    padding-bottom: 15px;
+    color: var(--dark-text);
+    font-weight: 700;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 100px; /* ขีดเส้นใต้กว้างขึ้นเล็กน้อย */
+    height: 5px; /* ขีดเส้นใต้หนาขึ้น */
+    background-color: var(--secondary-color);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 3px;
+}
+
+/* --- 6. Event Cards Grid --- */
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* ความกว้างการ์ดขั้นต่ำ 320px */
+    gap: var(--spacing-md);
+    justify-content: center;
+    align-items: stretch; /* การ์ดขยายให้ความสูงเท่ากัน */
+}
+
+.event-card {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column; /* เนื้อหาเรียงตามแนวตั้ง */
+}
+
+.event-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.event-card img {
+    width: 100%;
+    height: 220px; /* ความสูงของรูปภาพที่สม่ำเสมอ */
+    object-fit: cover; /* ครอบตัดให้พอดี */
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-content {
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* ช่วยให้เนื้อหาดันปุ่มลงไปด้านล่าง */
+}
+
+.card-content h3 {
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+    color: var(--dark-text);
+}
+
+.card-content .event-date {
+    font-size: 1.15rem;
+    color: var(--date-color);
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.card-content .event-description {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 25px;
+    flex-grow: 1; /* ดันปุ่มลงไป */
+}
+
+.card-content .btn {
+    align-self: flex-start; /* จัดปุ่มให้อยู่ที่จุดเริ่มต้นของคอนเทนเนอร์ flex */
+}
+
+.view-all-btn-container {
+    text-align: center;
+    margin-top: var(--spacing-lg);
+}
+
+/* --- 7. About & Contact Sections --- */
+.about-section, .contact-section {
+    background-color: var(--background-accent);
+    border-radius: var(--border-radius-md);
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+.about-content p, .contact-content p {
+    font-size: 1.15rem;
+    max-width: 900px;
+    margin: 20px auto;
+    color: #444;
+}
+
+.contact-content strong {
+    color: var(--primary-color);
+}
+
+.social-links {
+    margin-top: var(--spacing-sm);
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-links a img {
+    width: 35px; /* ไอคอนใหญ่ขึ้น */
+    height: 35px;
+    filter: invert(0.2); /* ทำให้อฟิคอนเป็นสีเทาเข้ม */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-links a:hover img {
+    transform: translateY(-5px) scale(1.1);
+    filter: invert(0); /* ทำให้อฟิคอนเป็นสีดำเมื่อโฮเวอร์หรือเปลี่ยนสี */
+}
+
+/* --- 8. Footer --- */
+.main-footer {
+    background-color: var(--dark-text);
+    color: var(--light-text);
+    text-align: center;
+    padding: var(--spacing-md) 0;
+    margin-top: var(--spacing-xl);
+    font-size: 0.95rem;
+}
+
+.main-footer .container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+/* --- 9. Responsive Design (Media Queries) --- */
+
+/* สำหรับหน้าจอขนาดกลาง (แท็บเล็ต) */
+@media (max-width: 992px) {
+    .hero-section {
+        flex-direction: column-reverse; /* เปลี่ยนเป็นเรียงวิดีโออยู่ด้านบน เนื้อหาอยู่ด้านล่าง */
+        text-align: center;
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    .hero-content {
+        max-width: 90%; /* ขยายเนื้อหาให้กว้างขึ้นบนจอเล็ก */
+        padding-right: 0; /* ลบ padding ขวาออก */
+        margin-bottom: var(--spacing-md); /* เพิ่มระยะห่างด้านล่างของเนื้อหา */
+        text-align: center; /* จัดข้อความกึ่งกลาง */
+    }
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+    .my-video {
+        flex-basis: auto; /* ยกเลิก flex-basis เดิม */
+        width: 80%; /* ทำให้วิดีโอใช้ความกว้าง 80% ของหน้าจอ */
+        max-width: 500px; /* จำกัดขนาดสูงสุดบนจอเล็ก */
+        margin-left: auto; /* จัดกึ่งกลางวิดีโอ */
+        margin-right: auto; /* จัดกึ่งกลางวิดีโอ */
+        margin-bottom: var(--spacing-md); /* เพิ่มระยะห่างด้านล่างวิดีโอ */
+    }
+    .section-title {
+        font-size: 2.5rem;
+    }
+}
+
+/* สำหรับหน้าจอขนาดเล็ก (มือถือ) */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .nav-links {
+        position: fixed;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        width: 70%; /* เมนูกว้างขึ้นเพื่อให้สัมผัสได้ง่าย */
+        background-color: var(--dark-text);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; /* จัดรายการให้อยู่กึ่งกลางในแนวตั้งในเมนูมือถือ */
+        transform: translateX(100%);
+        transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1); /* แอนิเมชันที่ราบรื่นขึ้น */
+        padding-top: 0; /* ไม่มี padding เพิ่มเติม แต่จัดเนื้อหาให้อยู่กึ่งกลางแทน */
+        z-index: 999;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2); /* เพิ่มคุณสมบัติ box-shadow ที่หายไป */
+    }
+
+    /* สไตล์การสลับ Burger Menu */
+    .nav-active .nav-links {
+        transform: translateX(0);
+    }
+
+    .burger-menu {
+        display: block; /* แสดงเมนูเบอร์เกอร์บนมือถือ */
+    }
+
+    .my-video {
+        width: 95%; /* ขยายวิดีโอให้เกือบเต็มจอ */
+        max-width: unset; /* ไม่จำกัด max-width บนจอเล็กมาก */
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem; /* ปรับขนาดหัวข้อบนมือถือ */
+    }
+    .hero-content p {
+        font-size: 1rem; /* ปรับขนาดพารากราฟบนมือถือ */
+    }
+}
+.event-card picture {
+  display: block;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+  transition: transform 0.3s ease;
+}
+
+.event-card:hover picture {
+  transform: scale(1.1);
+}
+
+.profile-image {
+  text-align: center;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.profile-image img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid transparent;
+  background: linear-gradient(135deg, #ffecd2, #fcb69f, #a18cd1);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  padding: 4px;
+}
+
+.profile-image img:hover {
+  transform: scale(1.12) rotate(1deg);
+  box-shadow: 0 12px 30px rgba(255, 172, 100, 0.5);
+  box-shadow:0 12px 30px rgba(255, 172, 100, 0.5),
+    0 0 15px rgba(252, 176, 69, 0.7); /* แสงสีส้มทอง */
+}
+
+
+
+
+

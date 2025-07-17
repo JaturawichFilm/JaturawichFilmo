@@ -1,0 +1,137 @@
+
+.detail-main {
+    padding: var(--spacing-xl) var(--spacing-sm);
+}
+
+.detail-container {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    padding: var(--spacing-lg);
+    text-align: center;
+}
+
+#event-title {
+    margin-bottom: var(--spacing-md);
+    font-size: 3.2rem;
+    color: var(--dark-text);
+}
+
+.event-date-detail {
+    font-size: 1.4rem;
+    color: var(--date-color);
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+}
+
+.event-image-wrapper {
+    margin-bottom: var(--spacing-lg);
+    overflow: hidden;
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    max-width: 800px; /* Max width for image */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#event-image-detail {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s ease-out;
+}
+
+.event-image-wrapper:hover #event-image-detail {
+    transform: scale(1.05); /* Subtle zoom on hover */
+}
+
+.event-info-section {
+    text-align: left;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+.event-info-section p {
+    margin-bottom: 20px;
+    line-height: 1.8; /* More readable line height */
+}
+
+.info-block {
+    margin-bottom: var(--spacing-lg);
+}
+
+.info-title {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--secondary-color); /* Thicker underline */
+    display: inline-block;
+}
+
+.practice-list {
+    list-style: none; /* Remove default bullet points */
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.practice-list li {
+    position: relative;
+    padding-left: 30px; /* Space for custom bullet */
+    margin-bottom: 10px;
+}
+
+.practice-list li::before {
+    content: "โ”"; /* Custom bullet point */
+    color: var(--primary-color);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.back-btn-container {
+    text-align: center;
+    margin-top: var(--spacing-lg);
+}
+
+.error-message {
+    color: var(--date-color);
+    font-size: 1.8rem;
+    margin-top: 50px;
+}
+
+/* Responsive for Detail Page */
+@media (max-width: 768px) {
+    .detail-container {
+        padding: var(--spacing-md);
+    }
+    #event-title {
+        font-size: 2.5rem;
+    }
+    .event-date-detail {
+        font-size: 1.2rem;
+    }
+    .info-title {
+        font-size: 1.8rem;
+    }
+    .event-info-section {
+        font-size: 1rem;
+    }
+    .practice-list li {
+        padding-left: 25px;
+    }
+    .practice-list li::before {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    #event-title {
+        font-size: 2rem;
+    }
+    .info-title {
+        font-size: 1.5rem;
+    }
+}
